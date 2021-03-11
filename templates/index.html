@@ -1,0 +1,84 @@
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Calc</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/main.css') }}">
+
+</head>
+
+<body>
+    <div class="box">
+        <h1> Basic calculator </h1>
+
+        <div class="display">
+            <input type="text" readonly size="15" id="tb1">
+        </div>
+        <div class="keys">
+            <p>
+                <input type="button" class="button gray" value="-" onclick='c("Created....")'>
+                <input type="button" class="button gray" value="--" onclick='c("by....")'>
+                <input type="button" class="button gray" value="---" onclick='c("Abhijeet....")'>
+                <input type="button" class="button pink" value="/" onclick='v("/")'>
+            </p>
+            <p>
+                <input type="button" class="button black" value="7" , onclick='v("7")'>
+                <input type="button" class="button black" value="8" , onclick='v("8")'>
+                <input type="button" class="button black" value="9" , onclick='v("9")'>
+                <input type="button" class="button pink" value="*" , onclick='v("*")'>
+            </p>
+            <p>
+                <input type="button" class="button black" value="4" , onclick='v("4")'>
+                <input type="button" class="button black" value="5" , onclick='v("5")'>
+                <input type="button" class="button black" value="6" , onclick='v("6")'>
+                <input type="button" class="button pink" value="-" , onclick='v("-")'>
+            </p>
+            <p>
+                <input type="button" class="button black" value="1" , onclick='v("1")'>
+                <input type="button" class="button black" value="2" , onclick='v("2")'>
+                <input type="button" class="button black" value="3" , onclick='v("3")'>
+                <input type="button" class="button pink" value="+" , onclick='v("+")'>
+            </p>
+            <p>
+                <input type="button" class="button black" value="0" , onclick='v("0")'>
+                <input type="button" class="button black" value="." , onclick='v(".")'>
+                <input type="button" class="button black" value="C" , onclick='c("")'>
+                <input type="button" class="button orange" value="=" , onclick='e()'>
+            </p>
+            <p>
+                <input type="button" type="button" class="button about" value="About" , onclick="location.href='{{url_for('about')}}';">
+            </p>
+        </div>
+    </div>
+    <p>
+        <div id="footer">
+            <span>Copyright &copy; 2021 dragonBaby | Designed by Abhijeet</span>
+
+        </div>
+    </p>
+    <script>
+        function c(val) {
+            document.getElementById("tb1").value = val;
+        }
+
+        function v(val) {
+            if ((document.getElementById("tb1").value !== "Created....") & (document.getElementById("tb1").value !== "by....") & (document.getElementById("tb1").value !== "Abhijeet....")) {
+                document.getElementById("tb1").value += val;
+            } else {
+                c('Press C')
+            }
+        }
+
+        function e() {
+            try {
+                c(eval(document.getElementById("tb1").value))
+            } catch (e) {
+                c('Error - press C')
+            }
+        }
+    </script>
+
+</body>
+
+</html>
